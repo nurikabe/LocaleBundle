@@ -65,7 +65,7 @@ class LocaleSwitcherExtension extends \Twig_Extension
         $showCurrentLocale = $this->container->getParameter('lunetics_locale.switcher.show_current_locale');
         $useController = $this->container->getParameter('lunetics_locale.switcher.use_controller');
         $allowedLocales = $this->container->get('lunetics_locale.allowed_locales_provider')->getAllowedLocales();
-        $request = $this->container->get('request');
+        $request = $this->container->get('request_stack')->getMasterRequest();
         $router = $this->container->get('router');
 
         $infosBuilder = new TargetInformationBuilder($request, $router, $allowedLocales, $showCurrentLocale, $useController);
