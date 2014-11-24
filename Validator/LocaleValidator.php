@@ -9,7 +9,8 @@
  */
 namespace Lunetics\LocaleBundle\Validator;
 
-use Symfony\Component\Locale\Locale as SymfonyLocale;
+use Symfony\Component\Intl\Locale as SymfonyLocale;
+use Symfony\Component\Intl\Intl;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
@@ -81,7 +82,7 @@ class LocaleValidator extends ConstraintValidator
         if ($this->intlExtension) {
             $primary = SymfonyLocale::getPrimaryLanguage($locale);
             $region  = SymfonyLocale::getRegion($locale);
-            $locales = SymfonyLocale::getLocales();
+            $locales = Intl::getLocaleBundle()->getLocales();
 
             if ((null !== $region && strtolower($primary) != strtolower($region)) && !in_array($locale, $locales) && !in_array($primary, $locales)) {
                 $this->context->addViolation($constraint->message, array('%string%' => $locale));
