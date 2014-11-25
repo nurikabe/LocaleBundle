@@ -81,8 +81,8 @@ class LocaleValidatorTest extends \PHPUnit_Framework_TestCase
         $this->getLocaleValidator($intlExtension)->validate('eo', $constraint);  // Esperanto
         $this->getLocaleValidator($intlExtension)->validate('epo', $constraint);
 
-        // Filipino missing from ISO-639-2 support
-        //$this->getLocaleValidator($intlExtension)->validate('fil', $constraint);  // Filipino
+        // Note that Filipino seems to be missing from ISO-639-2 support in the new Intl component
+        $this->getLocaleValidator($intlExtension)->validate('fil', $constraint);  // Filipino
     }
 
     /**
@@ -117,8 +117,8 @@ class LocaleValidatorTest extends \PHPUnit_Framework_TestCase
 
         $this->getLocaleValidator($intlExtension)->validate('afr_af', $constraint);  // Afrikaans
 
-        // Filipino missing from ISO-639-2 support
-        //$this->getLocaleValidator($intlExtension)->validate('fil_PH', $constraint);
+        // Note that Filipino seems to be missing from ISO-639-2 support in the new Intl component
+        $this->getLocaleValidator($intlExtension)->validate('fil_PH', $constraint);
     }
 
     /**
